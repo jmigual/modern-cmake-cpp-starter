@@ -47,8 +47,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install ninja-build tool
-      uses: seanmiddleditch/gha-setup-ninja@v4
+    - name: wirekang/setup-ninja
+      uses: wirekang/setup-ninja@v1
+            
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.

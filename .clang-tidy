@@ -1,0 +1,15 @@
+Checks:  >
+  *,
+  -llvmlibc-*,
+  -fuchsia-*,
+  -modernize-use-trailing-return-type,
+  -google-build-using-namespace,
+  -altera-struct-pack-align,
+  -altera-id-dependent-backward-branch,
+  -altera-unroll-loops,
+  -abseil-string-find-startswith,
+  -readability-identifier-length,
+  -bugprone-easily-swappable-parameters
+CheckOptions:
+    misc-non-private-member-variables-in-classes.IgnorePublicMemberVariables: 1
+    cppcoreguidelines-non-private-member-variables-in-classes.IgnorePublicMemberVariables: 1

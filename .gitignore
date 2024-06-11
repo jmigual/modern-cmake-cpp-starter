@@ -1,0 +1,9 @@
+# Build system
+build/
+CMakeUserPresets.json
+
+# Editors
+.idea/
+.vscode/
+.cache
+compile_commands.json

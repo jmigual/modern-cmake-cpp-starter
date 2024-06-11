@@ -1,0 +1,283 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "displayName": "Default",
+            "description": "Default config, uses system default compiler",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "generator": "Ninja Multi-Config",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+                "CmakeCpp_BUILD_TOOLS": false
+            },
+            "environment": {
+                "NINJA_STATUS": "[%s/%t %p :: %e] "
+            }
+        },
+        {
+            "name": "MSVC",
+            "displayName": "MSVC",
+            "description": "Use the Visual Studio compiler",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "cl",
+                "CMAKE_C_COMPILER": "cl"
+            },
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "toolset": {
+                "value": "host=x64",
+                "strategy": "external"
+            }
+        },
+        {
+            "name": "clang",
+            "displayName": "Clang",
+            "description": "Use the clang compiler",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_C_COMPILER": "clang"
+            }
+        },
+        {
+            "name": "GCC",
+            "displayName": "GCC",
+            "description": "Use the GCC compiler",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "g++-11",
+                "CMAKE_C_COMPILER": "gcc-11"
+            }
+        },
+        {
+            "name": "tools",
+            "displayName": "tools",
+            "description": "Also compile application",
+            "inherits": "default",
+            "cacheVariables": {
+                "CmakeCpp_BUILD_TOOLS": true
+            }
+        },
+        {
+            "name": "tools-msvc",
+            "displayName": "tools (MSVC)",
+            "description": "Also compile application (MSVC)",
+            "inherits": ["tools", "MSVC"]
+        },
+        {
+            "name": "tools-clang",
+            "displayName": "tools (clang)",
+            "description": "Also compile application (clang)",
+            "inherits": ["tools", "clang"]
+        },
+        {
+            "name": "tools-gcc",
+            "displayName": "tools (GCC)",
+            "description": "Also compile application (GCC)",
+            "inherits": ["tools", "GCC"]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug",
+            "displayName": "Debug",
+            "description": "Build with debug information",
+            "configurePreset": "default",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "Release",
+            "displayName": "Release",
+            "description": "Optimized build without debug information",
+            "configurePreset": "default",
+            "configuration": "Release",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information",
+            "configurePreset": "default",
+            "configuration": "RelWithDebInfo",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "MSVC-Debug",
+            "displayName": "Debug",
+            "description": "Build with debug information",
+            "configurePreset": "MSVC",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "MSVC-Release",
+            "displayName": "Release",
+            "description": "Optimized build without debug information",
+            "configurePreset": "MSVC",
+            "configuration": "Release",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "MSVC-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information",
+            "configurePreset": "MSVC",
+            "configuration": "RelWithDebInfo",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "clang-Debug",
+            "displayName": "Debug",
+            "description": "Build with debug information",
+            "configurePreset": "clang",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "clang-Release",
+            "displayName": "Release",
+            "description": "Optimized build without debug information",
+            "configurePreset": "clang",
+            "configuration": "Release",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "clang-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information",
+            "configurePreset": "clang",
+            "configuration": "RelWithDebInfo",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "GCC-Debug",
+            "displayName": "Debug",
+            "description": "Build with debug information",
+            "configurePreset": "GCC",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "GCC-Release",
+            "displayName": "Release",
+            "description": "Optimized build without debug information",
+            "configurePreset": "GCC",
+            "configuration": "Release",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "GCC-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information",
+            "configurePreset": "GCC",
+            "configuration": "RelWithDebInfo",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-Debug",
+            "displayName": "Debug (Tools)",
+            "description": "Build with debug information and tools",
+            "configurePreset": "tools",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-Release",
+            "displayName": "Release (Tools)",
+            "description": "Optimized build with tools",
+            "configurePreset": "tools",
+            "configuration": "Release",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information and tools",
+            "configurePreset": "tools",
+            "configuration": "RelWithDebInfo",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-msvc-Debug",
+            "displayName": "Debug",
+            "description": "Build with debug information and tools using MSVC",
+            "configurePreset": "tools-msvc",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-msvc-Release",
+            "displayName": "Release",
+            "description": "Optimized build with tools using MSVC",
+            "configurePreset": "tools-msvc",
+            "configuration": "Release",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-msvc-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information and tools using MSVC",
+            "configurePreset": "tools-msvc",
+            "configuration": "RelWithDebInfo",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-clang-Debug",
+            "displayName": "Debug",
+            "description": "Build with debug information and tools using clang",
+            "configurePreset": "tools-clang",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-clang-Release",
+            "displayName": "Release",
+            "description": "Optimized build with tools using clang",
+            "configurePreset": "tools-clang",
+            "configuration": "Release",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-clang-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information and tools using clang",
+            "configurePreset": "tools-clang",
+            "configuration": "RelWithDebInfo",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-gcc-Debug",
+            "displayName": "Debug",
+            "description": "Build with debug information and tools using GCC",
+            "configurePreset": "tools-gcc",
+            "configuration": "Debug",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-gcc-Release",
+            "displayName": "Release",
+            "description": "Optimized build with tools using GCC",
+            "configurePreset": "tools-gcc",
+            "configuration": "Release",
+            "inheritConfigureEnvironment": true
+        },
+        {
+            "name": "tools-gcc-RelWithDebInfo",
+            "displayName": "RelWithDebInfo",
+            "description": "Optimized build with debug information and tools using GCC",
+            "configurePreset": "tools-gcc",
+            "configuration": "RelWithDebInfo",
+            "inheritConfigureEnvironment": true
+        }
+    ]
+}

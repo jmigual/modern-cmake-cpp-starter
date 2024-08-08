@@ -39,8 +39,9 @@ include (cmake/CPM.cmake)
 
 # Declare here all your dependencies
 
-# Use fmtlib as an example
+# Use fmtlib and nlohmann::json as an example
 CPMAddPackage("gh:fmtlib/fmt#10.2.1")
+CPMAddPackage("gh:nlohmann/json@3.11.3")
 
 # The compiled library code is here
 add_subdirectory(lib)

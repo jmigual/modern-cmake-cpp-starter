@@ -2,11 +2,13 @@
 #define EXAMPLE_HPP
 
 #include <string>
-#include <iostream>
+#include <sstream>
 
 namespace Example {
-    inline void appGreeter(std::string name) {
-        std::cout << "Hello " << name << " from the app greeter!\n";
+    inline std::string appGreeter(std::string name) {
+        std::stringstream ss;
+        ss << "Hello " << name << " from the app greeter!\n";
+        return ss.str();
     }
 }
 

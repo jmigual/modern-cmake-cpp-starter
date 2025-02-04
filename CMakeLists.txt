@@ -42,6 +42,11 @@ include (cmake/CPM.cmake)
 # Use fmtlib and nlohmann::json as an example
 CPMAddPackage("gh:fmtlib/fmt#10.2.1")
 CPMAddPackage("gh:nlohmann/json@3.11.3")
+CPMAddPackage(
+  GITHUB_REPOSITORY "google/benchmark"
+  VERSION 1.9.1
+  OPTIONS "BENCHMARK_ENABLE_TESTING OFF"
+)
 
 # The compiled library code is here
 add_subdirectory(lib)

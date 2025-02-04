@@ -12,7 +12,7 @@ add_executable(${APP_NAME} ${${APP_NAME}_SOURCES} ${${APP_NAME}_HEADERS})
 
 target_include_directories(${APP_NAME} PUBLIC ${${APP_NAME}_INCLUDE_DIR})
 
-target_link_libraries(${APP_NAME} PRIVATE ${LIB_NAME} fmt::fmt nlohmann_json::nlohmann_json)
-target_compile_features(${APP_NAME} PUBLIC cxx_std_20)
+target_link_libraries(${APP_NAME} PRIVATE ${LIB_NAME} fmt::fmt nlohmann_json::nlohmann_json benchmark::benchmark)
+target_compile_features(${APP_NAME} PUBLIC cxx_std_23)
 set_target_properties(${APP_NAME} PROPERTIES CXX_EXTENSIONS OFF)
 
